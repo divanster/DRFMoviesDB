@@ -5,7 +5,6 @@ from .models import Moviedata
 from django.core.paginator import Paginator
 
 
-
 # Create your views here.
 # View with adding option
 class MovieViewSet(viewsets.ModelViewSet):
@@ -34,4 +33,6 @@ def movie_list(request):
     paginator = Paginator(movies, 10)  # Show 10 movies per page
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
-    return render(request, 'movies/movie_list.html', {'page_obj': page_obj})
+    return render(request, 'movies/movie_list.html', {'movies': movies})
+
+
